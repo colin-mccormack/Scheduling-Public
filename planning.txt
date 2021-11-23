@@ -1,0 +1,161 @@
+
+Current tasks :
+
+    Create mysql table for storing data {
+        Possibility one : Create table that has row of names, column of days => store data as string identified at name[x].day like "4:30-9:30"
+
+        Possibility two : Use exisiting table for shifts with boolean value true or false for working with row of names, column of days => store data as identified at name[x].day
+                            However, data stored is actually just a refrence to another table called user[x].day_tb with startTime.hour, startTime.minute, endTime.hour, endTime.minute
+
+        Possibility three : Use exisiting table for shifts with boolean value true or false for working with row of names, column of days => store data as identified at name[x].day
+                            Each day has a table like availability with rows of names and columns of startTime.hour, startTime.minute, endTime.hour, endTime.minute
+                                check if already entry for working in individual day table 
+                                if true {
+                                    output result as an existing shift in proper format
+                                    give option to edit as value true false
+                                    if true {
+                                        allow user to create shift like in else but instead show defaults in dropdown as already selected
+                                    }
+                                }
+                                
+                                else {
+                                    create shift by propmpting user to select start time and end time on specific day
+                                }
+    } 
+
+    Event listener : when button clicked open box or expand box specific to user : day {
+        Allow for user to select start and end times populated by a dropdown (use managment.js)
+        Identify data as coming from user[x].day
+        Send data to mysql table
+    }  
+
+    Onload : show existing shifts from mysql schedule table
+
+
+
+8/2/2021
+Next steps : {
+    Done : Make post request through ajax {
+        To do this I will need to append current shift data to url
+        This is best since I can lower the time spent in user controller
+        Also this will prevent injection since I can sanitize the url
+
+    }
+    Done : Allow the user to remove shift
+    Done : Remove line that pops up below dynamically populated values
+    Done : Get rid of inc and dec...instead use sanitized url
+}
+8/5/2021
+Next steps : {
+    Done : Printing schedule
+    Print schedule without edit buttons
+    Assign user levels {
+        Potential Solution : Only let admin's visit special change schedule page
+    }
+    Show current shifts for current employee on home page {
+        Multiple queries with labels
+        Only display when result {
+            use if statments from ejs on each
+            create variable in each row and check if vartiable true then also show title
+        }
+    }
+}
+8/12/2021
+Next steps : {
+    Show schedule times under day when it is clicked by the user (calender)
+}
+8/25/2021
+Next steps : {
+    When edit button is clicked add ejs to display availability from each day below shift dropdown
+    Use ajax call to populate availability based on enum
+    Get enum from previous schedule call possibly sending data to holder function
+}
+8/26/2021
+Next steps : {
+    Add page for organization and creating admins
+    Make each organization it's own db using otherwise same framework
+}
+8/31/2021
+Next steps : {
+    Create page where anyone can go called index {
+        On index {
+            Have a link to the login page in the header navagaition bar
+            Have a big image and slogin
+            Mission statment with content designer image
+            Customer testemonials in three boxes with quotes symbol
+            Have a footer with copyright and other information
+        }
+        On purchase {
+            Mission statemnt and how we deliver in bullet points
+            Screeshots of the program
+            Pricing with paypal buttons
+        }
+    }
+}
+Overall admin/user function {
+    When a customer orders their product they will fill out a form with their organization name and email
+    An email or automated system will then create a database with the name organization_EnterNameHere
+    The customer will receive a paypal invoice
+    The organization will receive an email from click calenders giving them one time login credentails with instructions on how to set up their account and begin creating admins and users {
+        I will need a way to do one time logins {
+            Possibly when the user creates the account set a timestamp
+            Every time someone logs into the site run a query to delete any entrys older than my expire time
+        }
+        I will need a new page behind original login page for creating users that can view home and users that can be admins
+    }
+}
+
+9/5/2021
+Next steps : {
+    Done : Restrict Register to logged in
+    Create new table admin {
+        You can only insert into admin using workbench or cli
+    }
+    If someone loggs in using credentials in accounts restrict them to the home page {
+        Create middleware for ifNotAdmin
+    }
+}
+Still to do : {
+    Add prevnetions if someone doesn't have both admin and basic login so it doesn't check on undefined
+    Error : TypeError: (intermediate value) is not iterable => Occurs on checkPassAdmin declaraction
+}
+
+
+10/28/2021 
+Next steps : {
+    Incorporate iCalendar standard with schedule to allow for easy access to other calendars cross-platform standard
+
+    Pass shift values to handler page as well as serving them
+    Handler page will be called icalGenerator.js {
+        Ical gerator content 
+            Take mysql timestamp and date format
+            Convert to a tz timestamp such as 20010911T124640Z with the format <year (4 digits)><month (2)><day (2)>T<hour (2)><minute (2)><second (2)>Z
+            Store as additional ical event
+            Convert ical object to file
+            Save file as url to download (learn how to create download from link)
+    }
+}
+
+11/7/2021
+Errors : {
+    Adding to register user is not working for aws instance but is working on localhost. {
+        Possible issues : db configuration, routing
+        Possible solutions : Try logging errors, they will show up on forever list log when console log outputs from a running file
+    }
+}
+Next steps : {
+    Implement ical generator by creating an api route that users are redirected to via url from the button. 
+    This url will be something like schedule/download and will download the ics file to the users computer.
+    A function in userController.js will {
+        Query database for all shifts for the current user
+        Convert info from mysql database to correct format acceptable for ics standard as defined in the wikipedia entry - https://en.wikipedia.org/wiki/ICalendar
+        Once the data has been converted to the appropriated format loop through creating events with valid information
+        These events sould be appended to one object so that it will then be served to the client at this api route
+    }
+}
+
+11/09/2021
+Errors : {
+    When multiple shifts are diplayed on the home page and you click on a shift it shows appends to the first element clicked instead of adding to other element that was clicked second
+    RegisterUser is throwing error
+}
