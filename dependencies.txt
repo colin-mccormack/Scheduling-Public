@@ -1,0 +1,28 @@
+npm install bcrypt bcryptjs body-parser ejs express express-session express-flash express-validator mysql2 passport passport-local
+
+mysql dependencies (run in workbench for only credentials) {
+
+    create table `organization`(name varchar(50) NOT NULL, numEmployees int, insertTime DATETIME DEFAULT CURRENT_TIMESTAMP);
+
+    create table `weekName` (id int auto_increment, enum int NOT NULL, fullName varchar(30) NOT NULL, sundayStart time, sundayEnd time, mondayStart time, mondayEnd time, tuesdayStart time, tuesdayEnd time, wednesdayStart time, wednesdayEnd time, thursdayStart time, thursdayEnd time, fridayStart time, fridayEnd time, saturdayStart time, saturdayEnd time, INDEX(id), CONSTRAINT FOREIGN KEY (`enum`) REFERENCES `employees`(`enum`) ON DELETE CASCADE);
+
+    create table `employees` (id int auto_increment, enum int primary key NOT NULL, fullName varchar(30) NOT NULL, authLevel int, INDEX(id));
+
+    create table `day` (enum int NOT NULL, insertTime DATETIME DEFAULT CURRENT_TIMESTAMP, start time, end time, CONSTRAINT FOREIGN KEY (`enum`) REFERENCES `employees`(`enum`) ON DELETE CASCADE);
+
+    create table admin (enum INT NOT NULL AUTO_INCREMENT, name VARCHAR(50) NOT NULL, email VARCHAR(50) NOT NULL UNIQUE, password VARCHAR(255), CONSTRAINT FOREIGN KEY (`enum`) REFERENCES `employees`(`enum`) ON DELETE CASCADE);
+
+    create table accounts (enum INT NOT NULL AUTO_INCREMENT, name VARCHAR(50) NOT NULL, email VARCHAR(50) NOT NULL UNIQUE, password VARCHAR(255), CONSTRAINT FOREIGN KEY (`enum`) REFERENCES `employees`(`enum`) ON DELETE CASCADE);
+
+}
+
+insert samples {
+
+    insert into `organization` (name) values ('credentials'); 
+
+    insert into `sun jul 25 2021 - sat jul 31 2021` (`enum`, `fullName`) select `enum`, `fullName` from `employees` where `fullName` != (select `fullName` from `sun jul 25 2021 - sat jul 31 2021`);
+
+    insert into accounts (name, email, password) VALUES ('Colin McCormack', 'cmcco3@ocdsb.ca', 'INSERT_HASH_HERE');
+}
+
+
