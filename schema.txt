@@ -1,0 +1,14 @@
+Database : Credentials
+
+Table for Login : Accounts (enum, name, email, hash) 
+    This is used only for logging in and registering a user on registerUser
+
+New table for login : Admin (enum, name, email, hash)
+    This will be checked after accounts. If someone has an account in this table they will only get access to the home page of the schedule
+
+Table for employee managament : Employees (id, enum, fullName, authLevel)
+    This is used for managing all aspects of staff ( adding new employees on managment page, promoting, deleting employees )
+
+Table for week schedule : WeekName (id, enum, fullName, sundayStart, sundayEnd...
+
+Table for availability : Day (enum, insertTime, start, end)
