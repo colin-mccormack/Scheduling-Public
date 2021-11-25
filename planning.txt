@@ -159,3 +159,11 @@ Errors : {
     When multiple shifts are diplayed on the home page and you click on a shift it shows appends to the first element clicked instead of adding to other element that was clicked second
     RegisterUser is throwing error
 }
+
+11/24/2021
+Errors : {
+    Invalid login validation crashing page with internal server error
+}
+Solution : {
+    Render organization along with error message if invalid login error is thrown by validator
+}
