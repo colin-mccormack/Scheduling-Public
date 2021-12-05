@@ -95,3 +95,5 @@ https://stackoverflow.com/questions/563406/add-days-to-javascript-date
 https://www.tutorialspoint.com/how-to-convert-a-string-into-integer-in-javascript#:~:text=To%20convert%20a%20string%20to,function%20won't%20accept%20spaces.
 https://stackoverflow.com/questions/23329190/how-to-add-5-hours-30-minutes-to-time?noredirect=1&lq=1
 https://www.tutorialspoint.com/How-to-add-2-hours-to-a-JavaScript-Date-object
+
+https://docs.bitnami.com/aws/how-to/understand-bncert/
