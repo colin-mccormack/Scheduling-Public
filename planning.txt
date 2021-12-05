@@ -1,12 +1,9 @@
 7/4/2021
-Current tasks :
-
+Current tasks : {
     Create mysql table for storing data {
         Possibility one : Create table that has row of names, column of days => store data as string identified at name[x].day like "4:30-9:30"
-
         Possibility two : Use exisiting table for shifts with boolean value true or false for working with row of names, column of days => store data as identified at name[x].day
                             However, data stored is actually just a refrence to another table called user[x].day_tb with startTime.hour, startTime.minute, endTime.hour, endTime.minute
-
         Possibility three : Use exisiting table for shifts with boolean value true or false for working with row of names, column of days => store data as identified at name[x].day
                             Each day has a table like availability with rows of names and columns of startTime.hour, startTime.minute, endTime.hour, endTime.minute
                                 check if already entry for working in individual day table 
@@ -22,14 +19,13 @@ Current tasks :
                                     create shift by propmpting user to select start time and end time on specific day
                                 }
     } 
-
     Event listener : when button clicked open box or expand box specific to user : day {
         Allow for user to select start and end times populated by a dropdown (use managment.js)
         Identify data as coming from user[x].day
         Send data to mysql table
     }  
-
     Onload : show existing shifts from mysql schedule table
+}
 
 
 
