@@ -1,4 +1,4 @@
-
+7/4/2021
 Current tasks :
 
     Create mysql table for storing data {
@@ -166,4 +166,9 @@ Errors : {
 }
 Solution : {
     Render organization along with error message if invalid login error is thrown by validator
+}
+
+12/05/2021
+Task : {
+    Renew https certificate
 }
