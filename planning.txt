@@ -14,7 +14,6 @@ Current tasks : {
                                         allow user to create shift like in else but instead show defaults in dropdown as already selected
                                     }
                                 }
-                                
                                 else {
                                     create shift by propmpting user to select start time and end time on specific day
                                 }
