@@ -50,6 +50,7 @@ Vist login page -> Serve login page (Get request) -> Send Login -> Validator che
 - When adding shifts for particular members of an organization that have set availability, their availability will display below the time dropdown for the shift to remind the user of requested time parameters
 - All dropdowns on edit schedule and availability pages are tab indexed to allow for extremly quick, mouseless data entry
 - Backend built using Node JS to allow for quick, asynchronous code
+- Support for Single Page Application (desktop/laptop app) and offline viewing
 
 ## Release Date
 Unfourtunately some aspects of the software are still in the testing phase so a release date has not been set for when the software is ready for full scale production.
